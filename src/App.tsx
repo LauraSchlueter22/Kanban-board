@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tasks, ColumnId, Task } from "./Task";
 import Column from "./Column";
 
@@ -9,9 +9,18 @@ const Columns = [
 ];
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>(Tasks);
+  const [tasks, setTasks] = useState<Task[]>(() => {
+    const saved = localStorage.getItem("kanban-tasks");
+    return saved ? JSON.parse(saved) : Tasks;
+  });
+
   const [newTaskTitle, setNewTaskTitle] = useState<string>("");
   const [newTaskDescrip, setNewTaskDescrip] = useState<string>("");
+
+
+  useEffect(() => {
+    localStorage.setItem("kanban-tasks", JSON.stringify(tasks))
+  }, [tasks]);
 
   const handleCreateTask = () => {
     if (!newTaskTitle || newTaskTitle.trim() === "") return;
