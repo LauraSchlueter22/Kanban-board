@@ -1,0 +1,31 @@
+
+.column {
+    background-color: #f1f5f9;
+    border-radius: 12px;
+    padding: 16px;
+    min-width: 280px;
+    min-height: 400px;
+    flex: 1;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b
+}
+
+.badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
